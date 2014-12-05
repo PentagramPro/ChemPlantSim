@@ -11,9 +11,9 @@ public class SlideHandle : MonoBehaviour, IDragHandler {
 
 	// Use this for initialization
 	void Start () {
-		Vector3 planeNorm = transform.TransformDirection(0,0,-1);
-		plane =  new Plane(planeNorm,transform.position);
-		posDir = transform.TransformDirection(0,1,0);
+		Vector3 planeNorm =new Vector3(0,0,-1);
+		plane =  new Plane(transform.TransformDirection(planeNorm),transform.position);
+		posDir = new Vector3(0,Range,0);
 		startPos = transform.localPosition;
 	}
 	
@@ -27,16 +27,17 @@ public class SlideHandle : MonoBehaviour, IDragHandler {
 	public void OnDrag (PointerEventData eventData)
 	{
 		Ray ray = Camera.main.ScreenPointToRay(eventData.position);
+
 		//Ray newp = Camera.main.ScreenPointToRay(eventData.position+eventData.delta);
 		//float oldd,newd;
 		float dist;
 		if(plane.Raycast(ray,out dist))
 		{
-			Vector3 projPoint = ray.GetPoint(dist);
+			Vector3 projPoint = transform.parent.InverseTransformPoint(ray.GetPoint(dist));
 
-			Vector3 delta = Vector3.Project(projPoint-transform.position,posDir);
+			Vector3 delta = Vector3.Project(projPoint,posDir);
 			if(delta.sqrMagnitude>posDir.sqrMagnitude)
-				delta = posDir*Vector3.Dot(delta,posDir);
+				delta = posDir*Mathf.Sign(Vector3.Dot(delta,posDir));
 			transform.localPosition = startPos+delta;
 
 		}
@@ -50,12 +51,12 @@ public class SlideHandle : MonoBehaviour, IDragHandler {
 
 		Start ();
 		Gizmos.color = Color.white;
-		Gizmos.DrawLine(plane.normal*Range+transform.position,transform.position);
+		Gizmos.DrawLine(transform.TransformPoint(plane.normal),transform.position);
 		Gizmos.color = Color.green;
-		Gizmos.DrawLine(transform.position,transform.position+posDir*Range);
-		Gizmos.DrawSphere(transform.position+posDir*Range,Range*0.05f);
+		Gizmos.DrawLine(transform.position,transform.parent.TransformPoint(posDir+transform.localPosition));
+		Gizmos.DrawSphere(transform.parent.TransformPoint(posDir+transform.localPosition),0.005f);
 		Gizmos.color = Color.red;
-		Gizmos.DrawLine(transform.position,transform.position-posDir*Range);
+		Gizmos.DrawLine(transform.position,transform.parent.TransformPoint(-posDir+transform.localPosition));
 		//Gizmos.DrawSphere(transform.position,0.1f);
 	}
 }
