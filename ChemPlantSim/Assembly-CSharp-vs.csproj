@@ -48,6 +48,9 @@
   <ItemGroup>
      <Compile Include="Assets\Sources\ControlSlider.cs" />
      <Compile Include="Assets\Sources\ControlSwitch.cs" />
+     <Compile Include="Assets\Sources\Plant\Common\ChemConnection.cs" />
+     <Compile Include="Assets\Sources\Plant\Common\ChemVolume.cs" />
+     <Compile Include="Assets\Sources\Plant\SchemeStyle.cs" />
      <Compile Include="Assets\Sources\SlideHandle.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
