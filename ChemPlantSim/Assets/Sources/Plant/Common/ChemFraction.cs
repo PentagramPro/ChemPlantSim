@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ControlSlider : MonoBehaviour {
+public class ChemFraction : MonoBehaviour {
 
+	public ChemElement Element;
+	public float Mass = 0;
+	public float Heat = 0;
 	// Use this for initialization
 	void Start () {
 	
