@@ -29,6 +29,20 @@ public class ChemMix  {
 			return heatCache/hc;
 		}
 	}
+
+	public void RebuildCache()
+	{
+		massCache = 0;
+		heatCache = 0;
+		heatCapSumCache = 0;
+
+		foreach(ChemFraction f in Fractions.Values)
+		{
+			massCache+=f.Mass;
+			heatCache+=f.Heat;
+			heatCapSumCache+=f.Mass*f.Element.HeatCap;
+		}
+	}
 	public void AddFraction(ChemFraction fraction)
 	{
 		ChemFraction newFrac = null;
@@ -99,8 +113,7 @@ public class ChemMix  {
 		index = 0;
 		foreach(ChemFraction f in Fractions.Values)
 		{
-			ChemFraction target = new ChemFraction();
-			target.Element = f.Element;
+			ChemFraction target = new ChemFraction(f.Element);
 			TakeFraction(target,mass*weights[index]);
 			index ++;
 			res.AddFraction(target);

@@ -58,6 +58,7 @@
      <Compile Include="Assets\Sources\Plant\Common\ChemVolume.cs" />
      <Compile Include="Assets\Sources\Plant\Common\Constants.cs" />
      <Compile Include="Assets\Sources\Plant\Common\Plant.cs" />
+     <Compile Include="Assets\Sources\Plant\Helpers\VolumeInitializer.cs" />
      <Compile Include="Assets\Sources\Plant\SchemeStyle.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>

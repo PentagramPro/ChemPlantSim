@@ -1,18 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ChemFraction : MonoBehaviour {
+public class ChemFraction  {
 
 	public ChemElement Element;
 	public float Mass = 0;
 	public float Heat = 0;
-	// Use this for initialization
-	void Start () {
-	
+
+	public ChemFraction (ChemElement element)
+	{
+		this.Element = element;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
