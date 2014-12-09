@@ -26,7 +26,7 @@ public class ChemMix  {
 			float hc = HeatCapacity;
 			if(hc==0)
 				return 0;
-			return heatCache/hc;
+			return heatCache/(hc*massCache);
 		}
 	}
 
