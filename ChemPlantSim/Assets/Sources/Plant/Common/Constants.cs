@@ -12,5 +12,6 @@ using System;
 public class Constants
 {
 	public static float R = 8.3144621f;
+	public static float WorldTemp = 290f; 
 }
 

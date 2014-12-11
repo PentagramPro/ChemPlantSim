@@ -4,9 +4,10 @@ using System.Collections.Generic;
 public class ChemMix  {
 
 	Dictionary<string, ChemFraction> Fractions = new Dictionary<string, ChemFraction>();
+	public float Heat = 0;
 
 	float massCache = 0;
-	float heatCache = 0;
+	//float heatCache = 0;
 	float heatCapSumCache = 0; // m1q1+m2q2+m3q3+...
 	public float Mass{
 		get{
@@ -26,20 +27,20 @@ public class ChemMix  {
 			float hc = HeatCapacity;
 			if(hc==0)
 				return 0;
-			return heatCache/(hc*massCache);
+			return Heat/(hc*massCache);
 		}
 	}
 
 	public void RebuildCache()
 	{
 		massCache = 0;
-		heatCache = 0;
+		//heatCache = 0;
 		heatCapSumCache = 0;
 
 		foreach(ChemFraction f in Fractions.Values)
 		{
 			massCache+=f.Mass;
-			heatCache+=f.Heat;
+			//heatCache+=f.Heat;
 			heatCapSumCache+=f.Mass*f.Element.HeatCap;
 		}
 	}
@@ -50,7 +51,7 @@ public class ChemMix  {
 		{
 			newFrac = Fractions[fraction.Element.Name];
 			newFrac.Mass+=fraction.Mass;
-			newFrac.Heat+=fraction.Heat;
+			//newFrac.Heat+=fraction.Heat;
 		}
 		else
 		{
@@ -58,7 +59,7 @@ public class ChemMix  {
 			Fractions[fraction.Element.Name] = newFrac;
 		}
 		massCache+=fraction.Mass;
-		heatCache+=fraction.Heat;
+		//heatCache+=fraction.Heat;
 
 		heatCapSumCache+=fraction.Mass*fraction.Element.HeatCap;
 
@@ -82,12 +83,12 @@ public class ChemMix  {
 			}
 
 			// refresh caches
-			float deltaH = heatCache*deltaM/massCache;
+			//float deltaH = heatCache*deltaM/massCache;
 			heatCapSumCache-=deltaM*target.Element.HeatCap;
-			heatCache -= deltaH;
+			//heatCache -= deltaH;
 			massCache -= deltaM;
 			target.Mass+=deltaM;
-			target.Heat+=deltaH;
+			//target.Heat+=deltaH;
 		}
 	}
 
@@ -96,6 +97,7 @@ public class ChemMix  {
 		foreach(ChemFraction f in mix.Fractions.Values)
 		{
 			AddFraction(f);
+			Heat+=mix.Heat;
 		}
 	}
 
@@ -110,6 +112,8 @@ public class ChemMix  {
 			weights[index] = f.Mass/Mass;
 			index++;
 		}
+
+		float deltaH = Heat*mass/massCache;
 		index = 0;
 		foreach(ChemFraction f in Fractions.Values)
 		{
@@ -118,7 +122,8 @@ public class ChemMix  {
 			index ++;
 			res.AddFraction(target);
 		}
-
+		Heat-=deltaH;
+		res.Heat+=deltaH;
 
 		return res;
 	}

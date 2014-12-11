@@ -65,11 +65,29 @@ public class ChemConnection : MonoBehaviour {
 
 	}
 
+	// >0 if it is more heat in source volume 
+	public float GetHeatBalance(ChemVolume receiverVol)
+	{
+		ChemVolume sourceVol = GetSourceForReceiver(receiverVol);
+		
+		return (sourceVol.Mix.Temp - receiverVol.Mix.Temp)*Kheat;
+		
+	}
+
 	public void MoveMass(ChemVolume receiverVol, float mass)
 	{
 		ChemVolume sourceVol = GetSourceForReceiver(receiverVol);
 
 		ChemMix mix = sourceVol.Mix.TakeMix(mass);
 		receiverVol.Mix.AddMix(mix);
+	}
+
+	public void MoveHeat(ChemVolume receiverVol, float heat)
+	{
+		ChemVolume sourceVol = GetSourceForReceiver(receiverVol);
+		float dh = Mathf.Min(sourceVol.Mix.Heat,heat);
+		sourceVol.Mix.Heat-=dh;
+		receiverVol.Mix.Heat+=dh;
+
 	}
 }

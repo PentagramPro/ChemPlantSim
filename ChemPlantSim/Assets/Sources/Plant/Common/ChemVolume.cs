@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class ChemVolume : MonoBehaviour {
 
 	public float Volume = 1f;
+	public float HeatLoss = 0.001f;
 	public List<ChemConnection> Connections {get;set;}
 	public ChemMix Mix = new ChemMix();
 	/*
@@ -43,6 +44,9 @@ public class ChemVolume : MonoBehaviour {
 
 		foreach(ChemConnection con in Connections)
 		{
+			if(!con.TransfersMass)
+				continue;
+
 			float bal = con.GetMassBalance(this);
 			if(bal>0)
 			{
@@ -50,6 +54,23 @@ public class ChemVolume : MonoBehaviour {
 			}
 		}
 
+		foreach(ChemConnection con in Connections)
+		{
+			if(!con.TransfersHeat)
+				continue;
+			
+			float bal = con.GetHeatBalance(this);
+			if(bal>0)
+			{
+				con.MoveHeat(this,bal*Time.fixedDeltaTime);
+			}
+		}
+
+		float heatToWorld = HeatLoss*(Mix.Temp-Constants.WorldTemp);
+		if(heatToWorld!=0)
+		{
+			Mix.Heat-=heatToWorld;
+		}
 
 	}
 
