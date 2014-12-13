@@ -16,8 +16,8 @@ public class VolumeInitializer : MonoBehaviour {
 		ChemVolume vol = GetComponent<ChemVolume>();
 		ChemFraction fraction = new ChemFraction(Element);
 		fraction.Mass = Pressure*vol.Volume / (Constants.R*Temperature);
-		vol.Mix.Heat = Temperature*Element.HeatCap;
 		vol.Mix.AddFraction(fraction);
+		vol.Mix.Heat = Temperature*Element.HeatCap;
 		vol.Mix.RebuildCache();
 
 	}

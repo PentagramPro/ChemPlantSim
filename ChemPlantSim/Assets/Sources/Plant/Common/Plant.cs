@@ -21,5 +21,7 @@ public class Plant : MonoBehaviour {
 		{
 			v.OnMoveMass();
 		}
+
+	
 	}
 }

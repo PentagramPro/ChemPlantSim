@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent (typeof (Indicator))]
+[RequireComponent (typeof (ValueTransfer))]
 public class ChemVolumeDataSource : MonoBehaviour {
 
 	public enum ValueType{
@@ -10,10 +10,10 @@ public class ChemVolumeDataSource : MonoBehaviour {
 	public ChemVolume TargetVolume;
 	public ValueType TargetType;
 
-	Indicator indicator;
+	ValueTransfer indicator;
 	// Use this for initialization
 	void Awake(){
-		indicator = GetComponent<Indicator>();
+		indicator = GetComponent<ValueTransfer>();
 	}
 
 	void Start () {

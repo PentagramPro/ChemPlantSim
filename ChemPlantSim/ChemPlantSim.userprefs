@@ -1,28 +1,22 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Sources\Plant\Common\ChemVolume.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Sources\Plant\Common\ChemConnection.cs">
     <Files>
-      <File FileName="ChemPlantSim.sln" Line="1" Column="1" />
-      <File FileName="Assets\Sources\ControlRoom\ControlSwitch.cs" Line="1" Column="1" />
-      <File FileName="Assets\Sources\ControlRoom\Indicator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Sources\Plant\Common\ChemVolume.cs" Line="59" Column="25" />
-      <File FileName="Assets\Sources\Plant\Common\ChemFraction.cs" Line="8" Column="4" />
-      <File FileName="Assets\Sources\Plant\SchemeStyle.cs" Line="1" Column="1" />
-      <File FileName="Assets\Sources\Plant\Common\ChemConnection.cs" Line="90" Column="28" />
-      <File FileName="Assets\Sources\Plant\Common\ChemElement.cs" Line="1" Column="1" />
-      <File FileName="Assets\Sources\Plant\Common\ChemMix.cs" Line="126" Column="20" />
-      <File FileName="Assets\Sources\Plant\Common\Plant.cs" Line="1" Column="1" />
-      <File FileName="Assets\Sources\Plant\Common\Constants.cs" Line="15" Column="40" />
-      <File FileName="Assets\Sources\ControlRoom\ControlDisplay.cs" Line="1" Column="1" />
-      <File FileName="Assets\Sources\Plant\Helpers\VolumeInitializer.cs" Line="19" Column="15" />
+      <File FileName="Assets\Sources\ControlRoom\ValueTransfer.cs" Line="4" Column="27" />
       <File FileName="Assets\Sources\ControlRoom\ChemVolumeDataSource.cs" Line="1" Column="1" />
-      <File FileName="Assets\Sources\ControlRoom\SlideHandle.cs" Line="1" Column="1" />
+      <File FileName="Assets\Sources\ControlRoom\ConnectionActuator.cs" Line="4" Column="1" />
+      <File FileName="Assets\Sources\Plant\Common\ChemConnection.cs" Line="86" Column="1" />
+      <File FileName="Assets\Sources\Plant\Special\GasFurnace.cs" Line="4" Column="38" />
+      <File FileName="Assets\Sources\ControlRoom\GasFurnaceActuator.cs" Line="19" Column="11" />
+      <File FileName="Assets\Sources\ControlRoom\Actuator.cs" Line="10" Column="12" />
+      <File FileName="Assets\Sources\ControlRoom\ConsoleControls\ControlSlider.cs" Line="18" Column="40" />
+      <File FileName="Assets\Sources\Plant\Common\Plant.cs" Line="25" Column="2" />
+      <File FileName="Assets\Sources\Plant\Common\ChemVolume.cs" Line="67" Column="30" />
+      <File FileName="Assets\Sources\Plant\Helpers\VolumeInitializer.cs" Line="22" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="G:\unity-dev\ChemPlantSim\ChemPlantSim\Assets\Sources\Plant\Common\ChemMix.cs" line="49" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

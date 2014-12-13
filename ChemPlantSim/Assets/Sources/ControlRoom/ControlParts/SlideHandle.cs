@@ -8,6 +8,8 @@ public class SlideHandle : MonoBehaviour, IDragHandler {
 	Vector3 posDir;
 	Vector3 startPos;
 	public float Range = 0.05f;
+	public float Value {get;internal set;}
+	public ControlSlider Slider;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +22,16 @@ public class SlideHandle : MonoBehaviour, IDragHandler {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public void SetSliderPosition(float val)
+	{
+		val = Mathf.Clamp01(val);
+		Value = val;
+
+		transform.localPosition = startPos+posDir*(val*2f-1f);
+		Slider.OnValueChanged(Value);
+
 	}
 
 	#region IDragHandler implementation
@@ -36,10 +48,20 @@ public class SlideHandle : MonoBehaviour, IDragHandler {
 			Vector3 projPoint = transform.parent.InverseTransformPoint(ray.GetPoint(dist));
 
 			Vector3 delta = Vector3.Project(projPoint,posDir);
+			float sign = Mathf.Sign(Vector3.Dot(delta,posDir));
+
 			if(delta.sqrMagnitude>posDir.sqrMagnitude)
-				delta = posDir*Mathf.Sign(Vector3.Dot(delta,posDir));
+			{
+				delta = posDir*sign;
+				Value = (1f+sign)*0.5f;
+			}
+			else
+			{
+				Value = (1f+sign*delta.magnitude/posDir.magnitude)*0.5f;
+			}
 			transform.localPosition = startPos+delta;
 
+			Slider.OnValueChanged(Value);
 		}
 	}
 

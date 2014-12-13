@@ -7,6 +7,19 @@ public class ChemConnection : MonoBehaviour {
 	public ChemVolume VolumeIn,VolumeOut;
 	public float Kheat = 1, Kmass=  1;
 
+	// gate controls the amount of gas moving through this connection
+	public bool HasGate = false;
+	public bool HasCheckValve = false;
+
+	float gateGap = 1f;
+	public float GateGap{
+		get{
+			return gateGap;
+		}
+		set{
+			gateGap = Mathf.Clamp01(value);
+		}
+	}
 	void Awake(){
 
 	}
@@ -61,7 +74,7 @@ public class ChemConnection : MonoBehaviour {
 	{
 		ChemVolume sourceVol = GetSourceForReceiver(receiverVol);
 
-		return (sourceVol.Pressure - receiverVol.Pressure)*Kmass;
+		return (sourceVol.Pressure - receiverVol.Pressure)*Kmass*gateGap;
 
 	}
 
@@ -69,7 +82,8 @@ public class ChemConnection : MonoBehaviour {
 	public float GetHeatBalance(ChemVolume receiverVol)
 	{
 		ChemVolume sourceVol = GetSourceForReceiver(receiverVol);
-		
+		if(sourceVol.Mix.Mass==0 || receiverVol.Mix.Mass==0)
+			return 0;
 		return (sourceVol.Mix.Temp - receiverVol.Mix.Temp)*Kheat;
 		
 	}

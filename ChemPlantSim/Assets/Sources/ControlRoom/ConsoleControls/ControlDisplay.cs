@@ -2,14 +2,14 @@
 using UnityEngine.UI;
 using System.Collections;
 
-[RequireComponent (typeof (Indicator))]
+[RequireComponent (typeof (ValueTransfer))]
 public class ControlDisplay : MonoBehaviour {
 
 
 	Text Label;
 	void Awake(){
 		Label = GetComponent<Text>();
-		Indicator indicator = GetComponent<Indicator>();
+		ValueTransfer indicator = GetComponent<ValueTransfer>();
 		indicator.OnValueUpdated+=OnValueUpdated;
 	}
 

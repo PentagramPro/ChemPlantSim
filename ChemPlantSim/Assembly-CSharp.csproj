@@ -46,12 +46,15 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Sources\ControlRoom\Actuator.cs" />
      <Compile Include="Assets\Sources\ControlRoom\ChemVolumeDataSource.cs" />
-     <Compile Include="Assets\Sources\ControlRoom\ControlDisplay.cs" />
-     <Compile Include="Assets\Sources\ControlRoom\ControlSlider.cs" />
-     <Compile Include="Assets\Sources\ControlRoom\ControlSwitch.cs" />
-     <Compile Include="Assets\Sources\ControlRoom\Indicator.cs" />
-     <Compile Include="Assets\Sources\ControlRoom\SlideHandle.cs" />
+     <Compile Include="Assets\Sources\ControlRoom\ConnectionActuator.cs" />
+     <Compile Include="Assets\Sources\ControlRoom\ConsoleControls\ControlDisplay.cs" />
+     <Compile Include="Assets\Sources\ControlRoom\ConsoleControls\ControlSlider.cs" />
+     <Compile Include="Assets\Sources\ControlRoom\ConsoleControls\ControlSwitch.cs" />
+     <Compile Include="Assets\Sources\ControlRoom\ControlParts\SlideHandle.cs" />
+     <Compile Include="Assets\Sources\ControlRoom\GasFurnaceActuator.cs" />
+     <Compile Include="Assets\Sources\ControlRoom\ValueTransfer.cs" />
      <Compile Include="Assets\Sources\Plant\Common\ChemConnection.cs" />
      <Compile Include="Assets\Sources\Plant\Common\ChemElement.cs" />
      <Compile Include="Assets\Sources\Plant\Common\ChemFraction.cs" />
@@ -62,6 +65,7 @@
      <Compile Include="Assets\Sources\Plant\Common\Plant.cs" />
      <Compile Include="Assets\Sources\Plant\Helpers\VolumeInitializer.cs" />
      <Compile Include="Assets\Sources\Plant\SchemeStyle.cs" />
+     <Compile Include="Assets\Sources\Plant\Special\GasFurnace.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>

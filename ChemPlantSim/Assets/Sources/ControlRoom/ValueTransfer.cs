@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Indicator : MonoBehaviour {
+public class ValueTransfer : MonoBehaviour {
 
 	public delegate void ValueUpdated(float val);
 	public event ValueUpdated OnValueUpdated;

@@ -7,6 +7,11 @@ public class ChemVolume : MonoBehaviour {
 	public float HeatLoss = 0.001f;
 	public List<ChemConnection> Connections {get;set;}
 	public ChemMix Mix = new ChemMix();
+
+	//public float HullHeatCapacity = 50000f;
+	//public float HullKheat = 5f;
+	//float HullHeat = 0;
+
 	/*
 	struct InputConnection{
 		public ChemConnection Connection;
@@ -66,9 +71,10 @@ public class ChemVolume : MonoBehaviour {
 			}
 		}
 
-		float heatToWorld = HeatLoss*(Mix.Temp-Constants.WorldTemp);
-		if(heatToWorld!=0)
+
+		if(Mix.Mass>0)
 		{
+			float heatToWorld = HeatLoss*(Mix.Temp-Constants.WorldTemp)*(Mix.Temp-Constants.WorldTemp);
 			Mix.Heat-=heatToWorld;
 		}
 
