@@ -55,6 +55,8 @@
      <Compile Include="Assets\Sources\ControlRoom\ControlParts\SlideHandle.cs" />
      <Compile Include="Assets\Sources\ControlRoom\GasFurnaceActuator.cs" />
      <Compile Include="Assets\Sources\ControlRoom\ValueTransfer.cs" />
+     <Compile Include="Assets\Sources\Modeling\CTDelay.cs" />
+     <Compile Include="Assets\Sources\Modeling\CTIntegrator.cs" />
      <Compile Include="Assets\Sources\Plant\Common\ChemConnection.cs" />
      <Compile Include="Assets\Sources\Plant\Common\ChemElement.cs" />
      <Compile Include="Assets\Sources\Plant\Common\ChemFraction.cs" />
@@ -65,7 +67,8 @@
      <Compile Include="Assets\Sources\Plant\Common\Plant.cs" />
      <Compile Include="Assets\Sources\Plant\Helpers\VolumeInitializer.cs" />
      <Compile Include="Assets\Sources\Plant\SchemeStyle.cs" />
-     <Compile Include="Assets\Sources\Plant\Special\GasFurnace.cs" />
+     <Compile Include="Assets\Sources\Plant\UnitComponets\Boiler.cs" />
+     <Compile Include="Assets\Sources\Plant\VolumeComponents\GasFurnace.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>

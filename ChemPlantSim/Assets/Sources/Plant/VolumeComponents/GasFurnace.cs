@@ -25,7 +25,13 @@ public class GasFurnace : MonoBehaviour {
 	void Start () {
 	
 	}
-	
+
+	public float RemoveHeat()
+	{
+		float h = vol.Mix.Heat;
+		vol.Mix.Heat = 0;
+		return h;
+	}
 	// Update is called once per frame
 	void FixedUpdate () {
 		vol.Mix.Heat+=FuelHeat*MaxFuelMassPerSec*FuelRate*Time.fixedDeltaTime;

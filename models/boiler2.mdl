@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.13"
+    ComputedModelVersion    "1.15"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -27,9 +27,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Max"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Nov 10 01:38:45 2014"
-  RTWModifiedTimeStamp	  337481301
-  ModelVersionFormat	  "1.%<AutoIncrement:13>"
+  LastModifiedDate	  "Mon Dec 15 03:32:52 2014"
+  RTWModifiedTimeStamp	  340514941
+  ModelVersionFormat	  "1.%<AutoIncrement:15>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -67,8 +67,7 @@ Model {
     $ObjectID		    1
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "boiler2"
-    signals_		    []
-    overrideMode_	    [0U]
+    overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
       Dimension		      1
@@ -816,14 +815,6 @@ Model {
     SIDHighWatermark	    "34"
     Block {
       BlockType		      Constant
-      Name		      "Constant"
-      SID		      "1"
-      Position		      [65, 86, 160, 124]
-      ZOrder		      -5
-      Value		      "3e9"
-    }
-    Block {
-      BlockType		      Constant
       Name		      "Constant1"
       SID		      "22"
       Position		      [970, 365, 1000, 395]
@@ -885,6 +876,12 @@ Model {
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       RndMeth		      "Floor"
       SaturateOnIntegerOverflow	off
+      Port {
+	PortNumber		1
+	Name			"m пара"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
     }
     Block {
       BlockType		      Product
@@ -926,18 +923,6 @@ Model {
       InitialCondition	      "100000"
     }
     Block {
-      BlockType		      MinMax
-      Name		      "MinMax"
-      SID		      "6"
-      Ports		      [2, 1]
-      Position		      [945, 250, 1000, 325]
-      ZOrder		      -15
-      Function		      "min"
-      Inputs		      "2"
-      InputSameDT	      off
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
       BlockType		      Fcn
       Name		      "P to T"
       SID		      "26"
@@ -953,17 +938,6 @@ Model {
       SID		      "5"
       Ports		      [2, 1]
       Position		      [495, 367, 525, 398]
-      ZOrder		      -19
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-    }
-    Block {
-      BlockType		      Product
-      Name		      "Product1"
-      SID		      "13"
-      Ports		      [2, 1]
-      Position		      [830, 142, 860, 173]
       ZOrder		      -19
       InputSameDT	      off
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
@@ -1133,6 +1107,12 @@ Model {
       Criteria		      "u2 > Threshold"
       InputSameDT	      off
       SaturateOnIntegerOverflow	off
+      Port {
+	PortNumber		1
+	Name			"отнимаеи теплоту у котла"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
     }
     Block {
       BlockType		      TransferFcn
@@ -1168,6 +1148,43 @@ Model {
       ZOrder		      -5
       Value		      "100"
     }
+    Block {
+      BlockType		      Product
+      Name		      "испарение"
+      SID		      "13"
+      Ports		      [2, 1]
+      Position		      [830, 142, 860, 173]
+      ZOrder		      -19
+      InputSameDT	      off
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+      Port {
+	PortNumber		1
+	Name			"теплота пара"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
+    }
+    Block {
+      BlockType		      MinMax
+      Name		      "потолок \nпроизводительности"
+      SID		      "6"
+      Ports		      [2, 1]
+      Position		      [945, 250, 1000, 325]
+      ZOrder		      -15
+      Function		      "min"
+      Inputs		      "2"
+      InputSameDT	      off
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "теплота сгорания"
+      SID		      "1"
+      Position		      [65, 86, 160, 124]
+      ZOrder		      -5
+      Value		      "3e9"
+    }
     Line {
       SrcBlock		      "Cпр"
       SrcPort		      1
@@ -1181,7 +1198,7 @@ Model {
 	Points			[0, -20; 345, 0]
 	Branch {
 	  Points		  [25, 0]
-	  DstBlock		  "Product1"
+	  DstBlock		  "испарение"
 	  DstPort		  2
 	}
 	Branch {
@@ -1237,19 +1254,21 @@ Model {
     Line {
       SrcBlock		      "Subtract"
       SrcPort		      1
-      DstBlock		      "Product1"
+      DstBlock		      "испарение"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Product1"
+      Name		      "теплота пара"
+      SrcBlock		      "испарение"
       SrcPort		      1
       Points		      [30, 0]
       Branch {
 	Points			[0, 110]
-	DstBlock		"MinMax"
+	DstBlock		"потолок \nпроизводительности"
 	DstPort			1
       }
       Branch {
+	Labels			[1, 0]
 	Points			[130, 0; 0, 160]
 	DstBlock		"Switch"
 	DstPort			2
@@ -1259,10 +1278,11 @@ Model {
       SrcBlock		      "Product"
       SrcPort		      1
       Points		      [400, 0]
-      DstBlock		      "MinMax"
+      DstBlock		      "потолок \nпроизводительности"
       DstPort		      2
     }
     Line {
+      Name		      "m пара"
       SrcBlock		      "Divide1"
       SrcPort		      1
       Points		      [60, 0]
@@ -1271,6 +1291,7 @@ Model {
 	DstPort			1
       }
       Branch {
+	Labels			[1, 0]
 	Points			[0, 225; -60, 0]
 	DstBlock		"Product3"
 	DstPort			2
@@ -1283,12 +1304,13 @@ Model {
       DstPort		      1
     }
     Line {
-      SrcBlock		      "MinMax"
+      SrcBlock		      "потолок \nпроизводительности"
       SrcPort		      1
       DstBlock		      "Switch"
       DstPort		      1
     }
     Line {
+      Name		      "отнимаеи теплоту у котла"
       SrcBlock		      "Switch"
       SrcPort		      1
       Points		      [35, 0; 0, -30]
@@ -1297,6 +1319,7 @@ Model {
 	DstPort			1
       }
       Branch {
+	Labels			[2, 0]
 	Points			[0, -240; -795, 0; 0, 80]
 	DstBlock		"Subtract1"
 	DstPort			2
@@ -1310,7 +1333,7 @@ Model {
       DstPort		      3
     }
     Line {
-      SrcBlock		      "Constant"
+      SrcBlock		      "теплота сгорания"
       SrcPort		      1
       DstBlock		      "Product2"
       DstPort		      1

@@ -8,7 +8,7 @@ public class ChemConnection : MonoBehaviour {
 	public float Kheat = 1, Kmass=  1;
 
 	// gate controls the amount of gas moving through this connection
-	public bool HasGate = false;
+	//public bool HasGate = false;
 	public bool HasCheckValve = false;
 
 	float gateGap = 1f;
