@@ -1,3 +1,9 @@
 2014-12-08 02:23:21: LOG: Export: G:\unity-dev\ChemPlantSim\ChemPlantSim\Assets\Models\Console.FBX
 2014-12-08 02:23:49: LOG: Export: G:\unity-dev\ChemPlantSim\ChemPlantSim\Assets\Models\ControlLamp.FBX
 2014-12-08 02:24:02: LOG: Export: G:\unity-dev\ChemPlantSim\ChemPlantSim\Assets\Models\ControlSwitch.FBX
+2014-12-20 17:09:20: LOG: Export: G:\unity-dev\ChemPlantSim\ChemPlantSim\Assets\Models\RoundIndicator.FBX
+2014-12-20 21:26:53: LOG: Export: G:\unity-dev\ChemPlantSim\ChemPlantSim\Assets\Models\ControlRoom.FBX
+2014-12-20 21:28:45: LOG: Export: G:\unity-dev\ChemPlantSim\ChemPlantSim\Assets\Models\ControlRoom.FBX
+2014-12-20 21:28:55: LOG: [WARNING] Geometry conversion - The plug-in does not support the following objects' geometry type and will convert them to an editable mesh. Morph and skin deformations may be lost. 
+	If 'Enable in Viewport' is deactivated, closed shapes are capped and open shapes are converted to dummy objects with no edges or faces. 
+	If 'Enable in Viewport' is active, the Viewport settings are used for the mesh conversion:  pipeout pipein

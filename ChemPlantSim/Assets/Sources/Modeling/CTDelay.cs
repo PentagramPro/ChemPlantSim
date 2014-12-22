@@ -12,12 +12,18 @@ public class CTDelay
 		this.K = K;
 	}
 
+	public float Gain{
+		get{
+			return K;
+		}
+	}
+
 	public float Next(float x)
 	{
 		x-=lastValue*K;
 		x = sum.Next(x);
 		lastValue = x;
-		return x;
+		return x*K;
 	}
 }
 

@@ -46,12 +46,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Sources\CameraMovementController.cs" />
      <Compile Include="Assets\Sources\ControlRoom\Actuator.cs" />
      <Compile Include="Assets\Sources\ControlRoom\ChemVolumeDataSource.cs" />
      <Compile Include="Assets\Sources\ControlRoom\ConnectionActuator.cs" />
      <Compile Include="Assets\Sources\ControlRoom\ConsoleControls\ControlDisplay.cs" />
      <Compile Include="Assets\Sources\ControlRoom\ConsoleControls\ControlSlider.cs" />
      <Compile Include="Assets\Sources\ControlRoom\ConsoleControls\ControlSwitch.cs" />
+     <Compile Include="Assets\Sources\ControlRoom\ControlParts\ArrowController.cs" />
      <Compile Include="Assets\Sources\ControlRoom\ControlParts\SlideHandle.cs" />
      <Compile Include="Assets\Sources\ControlRoom\GasFurnaceActuator.cs" />
      <Compile Include="Assets\Sources\ControlRoom\ValueTransfer.cs" />
@@ -69,6 +71,7 @@
      <Compile Include="Assets\Sources\Plant\SchemeStyle.cs" />
      <Compile Include="Assets\Sources\Plant\UnitComponets\Boiler.cs" />
      <Compile Include="Assets\Sources\Plant\VolumeComponents\GasFurnace.cs" />
+     <None Include="Assets\Shaders\TranslucentShader.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>

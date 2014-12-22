@@ -11,5 +11,11 @@ public class ChemFraction  {
 	{
 		this.Element = element;
 	}
+
+	public ChemFraction (ChemElement element, float mass)
+	{
+		this.Element = element;
+		this.Mass = mass;
+	}
 	
 }

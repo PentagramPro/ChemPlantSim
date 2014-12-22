@@ -29,6 +29,10 @@ public class ChemMix  {
 				return 0;
 			return Heat/(hc*massCache);
 		}
+		set{
+
+			Heat = Mass*value*HeatCapacity;
+		}
 	}
 
 	public void RebuildCache()

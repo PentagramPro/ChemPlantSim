@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.15"
+    ComputedModelVersion    "1.20"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -27,9 +27,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "Max"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Dec 15 03:32:52 2014"
-  RTWModifiedTimeStamp	  340514941
-  ModelVersionFormat	  "1.%<AutoIncrement:15>"
+  LastModifiedDate	  "Sat Dec 20 16:35:42 2014"
+  RTWModifiedTimeStamp	  340981934
+  ModelVersionFormat	  "1.%<AutoIncrement:20>"
   ConfigurationManager	  "None"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -67,6 +67,7 @@ Model {
     $ObjectID		    1
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "boiler2"
+    signals_		    []
     overrideMode_	    [0.0]
     Array {
       Type		      "Cell"
@@ -132,7 +133,7 @@ Model {
 	  $ObjectID		  3
 	  Version		  "1.11.1"
 	  StartTime		  "0.0"
-	  StopTime		  "10.0"
+	  StopTime		  "100"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -787,18 +788,10 @@ Model {
       SampleTime	      "-1"
       AllowDiffInputSizes     off
     }
-    Block {
-      BlockType		      TransferFcn
-      Numerator		      "[1]"
-      Denominator	      "[1 2 1]"
-      AbsoluteTolerance	      "auto"
-      ContinuousStateAttributes	"''"
-      Realization	      "auto"
-    }
   }
   System {
     Name		    "boiler2"
-    Location		    [210, 104, 1724, 923]
+    Location		    [-1278, 80, -81, 1004]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -810,9 +803,21 @@ Model {
     TiledPaperMargins	    [1.270000, 1.270000, 1.270000, 1.270000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "100"
+    ZoomFactor		    "84"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "34"
+    SIDHighWatermark	    "39"
+    Block {
+      BlockType		      Sum
+      Name		      "Add"
+      SID		      "35"
+      Ports		      [2, 1]
+      Position		      [247, 435, 278, 465]
+      ZOrder		      -2
+      BlockRotation	      270
+      InputSameDT	      off
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
     Block {
       BlockType		      Constant
       Name		      "Constant1"
@@ -825,7 +830,7 @@ Model {
       BlockType		      Constant
       Name		      "Constant2"
       SID		      "25"
-      Position		      [100, 210, 130, 240]
+      Position		      [90, 175, 120, 205]
       ZOrder		      -5
       Value		      "0.2"
     }
@@ -833,9 +838,9 @@ Model {
       BlockType		      Constant
       Name		      "Cкот"
       SID		      "7"
-      Position		      [280, 176, 375, 214]
+      Position		      [60, 236, 155, 274]
       ZOrder		      -5
-      Value		      "4.2e6"
+      Value		      "4.2e3"
     }
     Block {
       BlockType		      Constant
@@ -849,10 +854,10 @@ Model {
       BlockType		      Product
       Name		      "Divide"
       SID		      "9"
-      Ports		      [2, 1]
-      Position		      [620, 110, 660, 170]
+      Ports		      [3, 1]
+      Position		      [625, 110, 665, 170]
       ZOrder		      -8
-      Inputs		      "*/"
+      Inputs		      "*/*"
       InputSameDT	      off
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       RndMeth		      "Floor"
@@ -912,6 +917,19 @@ Model {
       SaturateOnIntegerOverflow	off
     }
     Block {
+      BlockType		      Gain
+      Name		      "Gain1"
+      SID		      "38"
+      Position		      [480, 185, 510, 215]
+      ZOrder		      -8
+      BlockMirror	      on
+      NamePlacement	      "alternate"
+      Gain		      "0.5"
+      ParamDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
       BlockType		      Integrator
       Name		      "Integrator"
       SID		      "33"
@@ -923,6 +941,15 @@ Model {
       InitialCondition	      "100000"
     }
     Block {
+      BlockType		      Integrator
+      Name		      "Integrator1"
+      SID		      "37"
+      Ports		      [1, 1]
+      Position		      [545, 110, 575, 140]
+      ZOrder		      -2
+      InitialCondition	      "300*4.2e6"
+    }
+    Block {
       BlockType		      Fcn
       Name		      "P to T"
       SID		      "26"
@@ -931,6 +958,12 @@ Model {
       BlockMirror	      on
       NamePlacement	      "alternate"
       Expr		      "179.47*(u(1)^0.2391)"
+      Port {
+	PortNumber		1
+	Name			"Tremove"
+	RTWStorageClass		"Auto"
+	DataLoggingNameMode	"SignalName"
+      }
     }
     Block {
       BlockType		      Product
@@ -1019,7 +1052,7 @@ Model {
       BlockMirror	      on
       NamePlacement	      "alternate"
       Floating		      off
-      Location		      [1, 54, 1921, 1161]
+      Location		      [-241, 153, 1679, 1186]
       Open		      off
       NumInputPorts	      "2"
       List {
@@ -1091,7 +1124,19 @@ Model {
       Name		      "Subtract1"
       SID		      "16"
       Ports		      [2, 1]
-      Position		      [415, 107, 445, 138]
+      Position		      [365, 107, 395, 138]
+      ZOrder		      -31
+      Inputs		      "+-"
+      InputSameDT	      off
+      OutDataTypeStr	      "Inherit: Inherit via internal rule"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      Sum
+      Name		      "Subtract2"
+      SID		      "36"
+      Ports		      [2, 1]
+      Position		      [440, 117, 470, 148]
       ZOrder		      -31
       Inputs		      "+-"
       InputSameDT	      off
@@ -1115,20 +1160,12 @@ Model {
       }
     }
     Block {
-      BlockType		      TransferFcn
-      Name		      "Transfer Fcn"
-      SID		      "23"
-      Position		      [495, 107, 555, 143]
-      ZOrder		      -9
-      Denominator	      "[1 0.5]"
-    }
-    Block {
       BlockType		      Constant
-      Name		      "Tкип"
+      Name		      "Tk"
       SID		      "8"
-      Position		      [180, 275, 210, 305]
+      Position		      [155, 470, 185, 500]
       ZOrder		      -5
-      Value		      "100"
+      Value		      "273"
     }
     Block {
       BlockType		      Constant
@@ -1139,6 +1176,14 @@ Model {
       BlockMirror	      on
       NamePlacement	      "alternate"
       Value		      "30"
+    }
+    Block {
+      BlockType		      Constant
+      Name		      "m воды"
+      SID		      "39"
+      Position		      [25, 280, 55, 310]
+      ZOrder		      -5
+      Value		      "1000"
     }
     Block {
       BlockType		      Constant
@@ -1183,7 +1228,7 @@ Model {
       SID		      "1"
       Position		      [65, 86, 160, 124]
       ZOrder		      -5
-      Value		      "3e9"
+      Value		      "4e9"
     }
     Line {
       SrcBlock		      "Cпр"
@@ -1216,15 +1261,9 @@ Model {
       DstPort		      2
     }
     Line {
-      SrcBlock		      "Transfer Fcn"
-      SrcPort		      1
-      DstBlock		      "Divide"
-      DstPort		      1
-    }
-    Line {
       SrcBlock		      "Cкот"
       SrcPort		      1
-      Points		      [225, 0]
+      Points		      [445, 0; 0, -115]
       DstBlock		      "Divide"
       DstPort		      2
     }
@@ -1233,7 +1272,7 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "Divide"
       SrcPort		      1
-      Points		      [40, 0]
+      Points		      [35, 0]
       Branch {
 	DstBlock		"Subtract"
 	DstPort			1
@@ -1298,12 +1337,6 @@ Model {
       }
     }
     Line {
-      SrcBlock		      "Subtract1"
-      SrcPort		      1
-      DstBlock		      "Transfer Fcn"
-      DstPort		      1
-    }
-    Line {
       SrcBlock		      "потолок \nпроизводительности"
       SrcPort		      1
       DstBlock		      "Switch"
@@ -1320,7 +1353,7 @@ Model {
       }
       Branch {
 	Labels			[2, 0]
-	Points			[0, -240; -795, 0; 0, 80]
+	Points			[0, -240; -835, 0; 0, 80]
 	DstBlock		"Subtract1"
 	DstPort			2
       }
@@ -1347,7 +1380,7 @@ Model {
     Line {
       SrcBlock		      "Constant2"
       SrcPort		      1
-      Points		      [35, 0; 0, -105]
+      Points		      [45, 0; 0, -70]
       DstBlock		      "Product2"
       DstPort		      2
     }
@@ -1373,17 +1406,18 @@ Model {
       DstPort		      2
     }
     Line {
+      Name		      "Tremove"
+      Labels		      [0, 0]
       SrcBlock		      "P to T"
       SrcPort		      1
-      Points		      [-25, 0; 0, -130]
-      Branch {
-	Points			[0, -320; 450, 0]
-	DstBlock		"Subtract"
-	DstPort			2
-      }
+      Points		      [-35, 0; 0, -130; 0, 0]
       Branch {
 	DstBlock		"Scope2"
 	DstPort			1
+      }
+      Branch {
+	DstBlock		"Add"
+	DstPort			2
       }
     }
     Line {
@@ -1411,6 +1445,62 @@ Model {
       SrcPort		      1
       DstBlock		      "P to T"
       DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Add"
+      SrcPort		      1
+      Points		      [0, -195; 465, 0]
+      DstBlock		      "Subtract"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Tk"
+      SrcPort		      1
+      Points		      [65, 0]
+      DstBlock		      "Add"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Subtract1"
+      SrcPort		      1
+      DstBlock		      "Subtract2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Integrator1"
+      SrcPort		      1
+      Points		      [5, 0]
+      Branch {
+	Points			[25, 0]
+	DstBlock		"Divide"
+	DstPort			1
+      }
+      Branch {
+	Points			[0, 75]
+	DstBlock		"Gain1"
+	DstPort			1
+      }
+    }
+    Line {
+      SrcBlock		      "Gain1"
+      SrcPort		      1
+      Points		      [-60, 0; 0, -60]
+      DstBlock		      "Subtract2"
+      DstPort		      2
+    }
+    Line {
+      SrcBlock		      "Subtract2"
+      SrcPort		      1
+      Points		      [25, 0; 0, -10]
+      DstBlock		      "Integrator1"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "m воды"
+      SrcPort		      1
+      Points		      [550, 0]
+      DstBlock		      "Divide"
+      DstPort		      3
     }
   }
 }

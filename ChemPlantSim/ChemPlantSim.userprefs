@@ -1,24 +1,28 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Sources\Modeling\CTDelay.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Shaders\TranslucentShader.shader">
     <Files>
-      <File FileName="Assets\Sources\Plant\UnitComponets\Boiler.cs" Line="6" Column="2" />
-      <File FileName="Assets\Sources\ControlRoom\ValueTransfer.cs" Line="1" Column="1" />
-      <File FileName="Assets\Sources\ControlRoom\ConnectionActuator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Sources\Plant\Common\ChemConnection.cs" Line="1" Column="1" />
-      <File FileName="Assets\Sources\ControlRoom\GasFurnaceActuator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Sources\ControlRoom\Actuator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Sources\ControlRoom\ConsoleControls\ControlSlider.cs" Line="1" Column="1" />
-      <File FileName="Assets\Sources\Plant\Common\Plant.cs" Line="1" Column="1" />
+      <File FileName="Assets\Sources\Plant\SchemeStyle.cs" Line="1" Column="1" />
+      <File FileName="Assets\Sources\Plant\UnitComponets\Boiler.cs" Line="1" Column="1" />
+      <File FileName="Assets\Sources\Plant\VolumeComponents\GasFurnace.cs" Line="1" Column="1" />
       <File FileName="Assets\Sources\Plant\Common\ChemVolume.cs" Line="1" Column="1" />
       <File FileName="Assets\Sources\Plant\Helpers\VolumeInitializer.cs" Line="1" Column="1" />
-      <File FileName="Assets\Sources\Plant\VolumeComponents\GasFurnace.cs" Line="33" Column="12" />
-      <File FileName="Assets\Sources\Modeling\CTIntegrator.cs" Line="14" Column="16" />
-      <File FileName="Assets\Sources\Modeling\CTDelay.cs" Line="20" Column="12" />
+      <File FileName="Assets\Sources\Plant\Common\Constants.cs" Line="1" Column="1" />
+      <File FileName="Assets\Sources\Plant\Common\ChemMix.cs" Line="1" Column="1" />
+      <File FileName="Assets\Sources\Modeling\CTDelay.cs" Line="1" Column="1" />
+      <File FileName="Assets\Sources\ControlRoom\ControlParts\ArrowController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Sources\ControlRoom\ControlParts\SlideHandle.cs" Line="1" Column="1" />
+      <File FileName="Assets\Sources\ControlRoom\ConsoleControls\ControlDisplay.cs" Line="1" Column="1" />
+      <File FileName="Assets\Sources\ControlRoom\ConsoleControls\ControlSlider.cs" Line="1" Column="1" />
+      <File FileName="Assets\Sources\ControlRoom\ValueTransfer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Sources\CameraMovementController.cs" Line="8" Column="34" />
+      <File FileName="Assets\Shaders\TranslucentShader.shader" Line="77" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="G:\unity-dev\ChemPlantSim\ChemPlantSim\Assets\Sources\Plant\UnitComponets\Boiler.cs" line="37" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

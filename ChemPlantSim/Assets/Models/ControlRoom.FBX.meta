@@ -20,6 +20,38 @@ ModelImporter:
     100028: Rectangle010
     100030: RoomWalls
     100032: Windows
+    100034: Box006
+    100036: Box007
+    100038: Box008
+    100040: Box009
+    100042: Box010
+    100044: Box011
+    100046: Box012
+    100048: Box013
+    100050: Box014
+    100052: Box015
+    100054: Box016
+    100056: Box017
+    100058: Box018
+    100060: Box019
+    100062: Box020
+    100064: Box021
+    100066: Box022
+    100068: Box023
+    100070: CentralHeatingPipes1
+    100072: ControlRoomModel
+    100074: default
+    100076: default001
+    100078: default002
+    100080: heatpipe1
+    100082: heatpipe2
+    100084: Line001
+    100086: Line002
+    100088: pipein
+    100090: pipeout
+    100092: radiator
+    100094: Table
+    100096: Table001
     400000: Box002
     400002: Box003
     400004: Box004
@@ -37,6 +69,38 @@ ModelImporter:
     400028: Rectangle010
     400030: RoomWalls
     400032: Windows
+    400034: Box006
+    400036: Box007
+    400038: Box008
+    400040: Box009
+    400042: Box010
+    400044: Box011
+    400046: Box012
+    400048: Box013
+    400050: Box014
+    400052: Box015
+    400054: Box016
+    400056: Box017
+    400058: Box018
+    400060: Box019
+    400062: Box020
+    400064: Box021
+    400066: Box022
+    400068: Box023
+    400070: CentralHeatingPipes1
+    400072: ControlRoomModel
+    400074: default
+    400076: default001
+    400078: default002
+    400080: heatpipe1
+    400082: heatpipe2
+    400084: Line001
+    400086: Line002
+    400088: pipein
+    400090: pipeout
+    400092: radiator
+    400094: Table
+    400096: Table001
     2300000: Box002
     2300002: Box003
     2300004: Box004
@@ -52,6 +116,32 @@ ModelImporter:
     2300024: Rectangle009
     2300026: Rectangle010
     2300028: RoomWalls
+    2300030: Box006
+    2300032: Box007
+    2300034: Box008
+    2300036: Box009
+    2300038: Box010
+    2300040: Box011
+    2300042: Box012
+    2300044: Box013
+    2300046: Box014
+    2300048: Box015
+    2300050: Box016
+    2300052: Box017
+    2300054: Box018
+    2300056: Box019
+    2300058: Box020
+    2300060: Box021
+    2300062: Box022
+    2300064: Box023
+    2300066: default
+    2300068: default001
+    2300070: default002
+    2300072: heatpipe1
+    2300074: heatpipe2
+    2300076: pipein
+    2300078: pipeout
+    2300080: radiator
     3300000: Box002
     3300002: Box003
     3300004: Box004
@@ -67,6 +157,32 @@ ModelImporter:
     3300024: Rectangle009
     3300026: Rectangle010
     3300028: RoomWalls
+    3300030: Box006
+    3300032: Box007
+    3300034: Box008
+    3300036: Box009
+    3300038: Box010
+    3300040: Box011
+    3300042: Box012
+    3300044: Box013
+    3300046: Box014
+    3300048: Box015
+    3300050: Box016
+    3300052: Box017
+    3300054: Box018
+    3300056: Box019
+    3300058: Box020
+    3300060: Box021
+    3300062: Box022
+    3300064: Box023
+    3300066: default
+    3300068: default001
+    3300070: default002
+    3300072: heatpipe1
+    3300074: heatpipe2
+    3300076: pipein
+    3300078: pipeout
+    3300080: radiator
     4300000: RoomWalls
     4300002: Rectangle001
     4300004: Rectangle002
@@ -82,6 +198,32 @@ ModelImporter:
     4300024: Box005
     4300026: Rectangle009
     4300028: Rectangle010
+    4300030: Box006
+    4300032: Box007
+    4300034: Box008
+    4300036: Box009
+    4300038: Box010
+    4300040: Box011
+    4300042: Box012
+    4300044: Box013
+    4300046: Box014
+    4300048: Box015
+    4300050: Box016
+    4300052: Box017
+    4300054: Box018
+    4300056: Box019
+    4300058: Box020
+    4300060: Box021
+    4300062: Box022
+    4300064: Box023
+    4300066: heatpipe1
+    4300068: pipeout
+    4300070: pipein
+    4300072: heatpipe2
+    4300074: radiator
+    4300076: default
+    4300078: default001
+    4300080: default002
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -107,7 +249,7 @@ ModelImporter:
     addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     weldVertices: 1
