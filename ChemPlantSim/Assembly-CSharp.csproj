@@ -49,7 +49,10 @@
      <Compile Include="Assets\Sources\CameraMovementController.cs" />
      <Compile Include="Assets\Sources\ControlRoom\Actuator.cs" />
      <Compile Include="Assets\Sources\ControlRoom\ChemVolumeDataSource.cs" />
+     <Compile Include="Assets\Sources\ControlRoom\CompressorActuator.cs" />
+     <Compile Include="Assets\Sources\ControlRoom\CompressorDataSource.cs" />
      <Compile Include="Assets\Sources\ControlRoom\ConnectionActuator.cs" />
+     <Compile Include="Assets\Sources\ControlRoom\ConnectionDataSource.cs" />
      <Compile Include="Assets\Sources\ControlRoom\ConsoleControls\ControlDisplay.cs" />
      <Compile Include="Assets\Sources\ControlRoom\ConsoleControls\ControlSlider.cs" />
      <Compile Include="Assets\Sources\ControlRoom\ConsoleControls\ControlSwitch.cs" />
@@ -66,11 +69,15 @@
      <Compile Include="Assets\Sources\Plant\Common\ChemReaction.cs" />
      <Compile Include="Assets\Sources\Plant\Common\ChemVolume.cs" />
      <Compile Include="Assets\Sources\Plant\Common\Constants.cs" />
+     <Compile Include="Assets\Sources\Plant\Common\GasUtils.cs" />
      <Compile Include="Assets\Sources\Plant\Common\Plant.cs" />
+     <Compile Include="Assets\Sources\Plant\Helpers\UnitDrawer.cs" />
      <Compile Include="Assets\Sources\Plant\Helpers\VolumeInitializer.cs" />
      <Compile Include="Assets\Sources\Plant\SchemeStyle.cs" />
      <Compile Include="Assets\Sources\Plant\UnitComponets\Boiler.cs" />
+     <Compile Include="Assets\Sources\Plant\UnitComponets\Compressor.cs" />
      <Compile Include="Assets\Sources\Plant\VolumeComponents\GasFurnace.cs" />
+     <Compile Include="Assets\Sources\Plant\VolumeComponents\OpenVolume.cs" />
      <None Include="Assets\Shaders\TranslucentShader.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>F:/Apps/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>

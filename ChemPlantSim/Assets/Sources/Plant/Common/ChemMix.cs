@@ -6,6 +6,7 @@ public class ChemMix  {
 	Dictionary<string, ChemFraction> Fractions = new Dictionary<string, ChemFraction>();
 	public float Heat = 0;
 
+	public bool Infinite = false;
 	float massCache = 0;
 	//float heatCache = 0;
 	float heatCapSumCache = 0; // m1q1+m2q2+m3q3+...
@@ -50,6 +51,9 @@ public class ChemMix  {
 	}
 	public void AddFraction(ChemFraction fraction)
 	{
+		if(Infinite)
+			return;
+
 		ChemFraction newFrac = null;
 		if(Fractions.ContainsKey(fraction.Element.Name))
 		{
@@ -78,19 +82,22 @@ public class ChemMix  {
 			if(source.Mass<=mass)
 			{
 				deltaM = source.Mass;
-				source.Mass = 0;
+				if(!Infinite)
+					source.Mass = 0;
 			}
 			else
 			{
 				deltaM = mass;
-				source.Mass -= mass;
+				if(!Infinite)
+					source.Mass -= mass;
 			}
 
-			// refresh caches
-			//float deltaH = heatCache*deltaM/massCache;
-			heatCapSumCache-=deltaM*target.Element.HeatCap;
-			//heatCache -= deltaH;
-			massCache -= deltaM;
+			if(!Infinite)
+			{
+				heatCapSumCache-=deltaM*target.Element.HeatCap;
+
+				massCache -= deltaM;
+			}
 			target.Mass+=deltaM;
 			//target.Heat+=deltaH;
 		}
@@ -98,6 +105,8 @@ public class ChemMix  {
 
 	public void AddMix(ChemMix mix)
 	{
+		if(Infinite)
+			return;
 		foreach(ChemFraction f in mix.Fractions.Values)
 		{
 			AddFraction(f);
@@ -126,7 +135,8 @@ public class ChemMix  {
 			index ++;
 			res.AddFraction(target);
 		}
-		Heat-=deltaH;
+		if(!Infinite)
+			Heat-=deltaH;
 		res.Heat+=deltaH;
 
 		return res;
