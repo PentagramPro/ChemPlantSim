@@ -73,7 +73,10 @@ public class ChemConnection : MonoBehaviour {
 	public float GetMassBalance(ChemVolume receiverVol)
 	{
 		ChemVolume sourceVol = GetSourceForReceiver(receiverVol);
-
+		if(sourceVol.name=="SteamStorage")
+		{
+			int x=0;
+		}
 		return (sourceVol.Pressure - receiverVol.Pressure)*Kmass*gateGap;
 
 	}

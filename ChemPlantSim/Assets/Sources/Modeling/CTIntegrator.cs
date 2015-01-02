@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class CTIntegrator
 {
@@ -10,7 +11,7 @@ public class CTIntegrator
 
 	public float Next(float input)
 	{
-		value+=input;
+		value+=input*Time.fixedDeltaTime;
 		return value;
 	}
 }

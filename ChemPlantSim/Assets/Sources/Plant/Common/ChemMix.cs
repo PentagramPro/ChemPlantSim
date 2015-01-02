@@ -8,6 +8,7 @@ public class ChemMix  {
 
 	public bool Infinite = false;
 	float massCache = 0;
+	public string VolumeName {get;set;}
 	//float heatCache = 0;
 	float heatCapSumCache = 0; // m1q1+m2q2+m3q3+...
 	public float Mass{
@@ -75,6 +76,7 @@ public class ChemMix  {
 
 	public void TakeFraction(ChemFraction target, float mass)
 	{
+
 		if(Fractions.ContainsKey(target.Element.Name))
 		{
 			ChemFraction source = Fractions[target.Element.Name];
@@ -117,6 +119,7 @@ public class ChemMix  {
 	public ChemMix TakeMix(float mass)
 	{
 		ChemMix res = new ChemMix();
+
 
 		float[] weights = new float[Fractions.Count];
 		int index = 0;

@@ -5,7 +5,9 @@ public class Boiler : MonoBehaviour {
 
 
 
-	public GasFurnace Furnace;
+	//public GasFurnace Furnace;
+	public float FuelHeat,MaxFuelPerSec;
+	public float BurnRate {get;set;}
 	public ChemVolume Tank;
 	public ChemElement SteamElement;
 
@@ -32,7 +34,7 @@ public class Boiler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		float x = Furnace.RemoveHeat();
+		float x = FuelHeat*MaxFuelPerSec*BurnRate;
 
 		x-= Qremove;
 		x = boilerDelay.Next(x);

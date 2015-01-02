@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Sources\CameraMovementController.cs" />
      <Compile Include="Assets\Sources\ControlRoom\Actuator.cs" />
+     <Compile Include="Assets\Sources\ControlRoom\BoilerActuator.cs" />
      <Compile Include="Assets\Sources\ControlRoom\ChemVolumeDataSource.cs" />
      <Compile Include="Assets\Sources\ControlRoom\CompressorActuator.cs" />
      <Compile Include="Assets\Sources\ControlRoom\CompressorDataSource.cs" />
@@ -71,6 +72,7 @@
      <Compile Include="Assets\Sources\Plant\Common\Constants.cs" />
      <Compile Include="Assets\Sources\Plant\Common\GasUtils.cs" />
      <Compile Include="Assets\Sources\Plant\Common\Plant.cs" />
+     <Compile Include="Assets\Sources\Plant\Helpers\TurbineGasodynamic.cs" />
      <Compile Include="Assets\Sources\Plant\Helpers\UnitDrawer.cs" />
      <Compile Include="Assets\Sources\Plant\Helpers\VolumeInitializer.cs" />
      <Compile Include="Assets\Sources\Plant\SchemeStyle.cs" />

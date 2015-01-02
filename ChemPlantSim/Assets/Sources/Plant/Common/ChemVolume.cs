@@ -7,6 +7,7 @@ public class ChemVolume : MonoBehaviour {
 	public float HeatLoss = 0.001f;
 	public List<ChemConnection> Connections {get;set;}
 	public ChemMix Mix = new ChemMix();
+	public bool InfiniteMix = false;
 
 	//public float HullHeatCapacity = 50000f;
 	//public float HullKheat = 5f;
@@ -25,10 +26,12 @@ public class ChemVolume : MonoBehaviour {
 	}*/
 	void Awake(){
 		Connections = new List<ChemConnection>();
+		Mix.Infinite = InfiniteMix;
+		Mix.VolumeName = name;
 	}
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame

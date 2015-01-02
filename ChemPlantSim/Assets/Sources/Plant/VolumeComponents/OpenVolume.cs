@@ -22,6 +22,7 @@ public class OpenVolume : MonoBehaviour {
 		volume.Mix.AddFraction(new ChemFraction(N2,m*frN2));
 		volume.Mix.AddFraction(new ChemFraction(CO2,m*frCO2));
 		volume.Mix.AddFraction(new ChemFraction(InertGas,m*(1-frO2-frN2-frCO2)));
+		volume.Mix.Heat = m*volume.Mix.HeatCapacity*Constants.WorldTemp;
 		volume.Mix.Infinite = true;
 
 	}

@@ -12,7 +12,7 @@ public class SlideHandle : MonoBehaviour, IDragHandler {
 	public ControlSlider Slider;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		Vector3 planeNorm =new Vector3(0,0,-1);
 		plane =  new Plane(transform.TransformDirection(planeNorm),transform.position);
 		posDir = new Vector3(0,Range,0);
@@ -71,7 +71,7 @@ public class SlideHandle : MonoBehaviour, IDragHandler {
 	{
 
 
-		Start ();
+		Awake ();
 		Gizmos.color = Color.white;
 		Gizmos.DrawLine(transform.TransformPoint(plane.normal),transform.position);
 		Gizmos.color = Color.green;
