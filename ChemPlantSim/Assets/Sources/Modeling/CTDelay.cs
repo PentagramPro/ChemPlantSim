@@ -6,10 +6,12 @@ public class CTDelay
 	CTIntegrator sum;
 	float K;
 	float lastValue = 0;
-	public CTDelay (float startCondition, float K)
+	Plant plant;
+	public CTDelay (Plant p,float startCondition, float K)
 	{
-		sum = new CTIntegrator(startCondition);
+		sum = new CTIntegrator(p,startCondition);
 		this.K = K;
+		plant = p;
 	}
 
 	public float Gain{

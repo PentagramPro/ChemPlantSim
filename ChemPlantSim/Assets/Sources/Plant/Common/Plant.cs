@@ -4,6 +4,16 @@ using System.Collections.Generic;
 public class Plant : MonoBehaviour {
 
 	List<ChemVolume> Volumes = new List<ChemVolume>();
+	public float PlantTimeScale = 1;
+
+	public float MaxDeltaM,MaxDeltaH;
+
+
+	public float PlantDeltaTime{
+		get{
+			return Time.fixedDeltaTime*PlantTimeScale;
+		}
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +27,12 @@ public class Plant : MonoBehaviour {
 
 	void FixedUpdate()
 	{
+		if(MaxDeltaH>3e7f || MaxDeltaM>50)
+			PlantTimeScale*=0.9f;
+		else if(MaxDeltaM<5 && MaxDeltaH<1e6)
+			PlantTimeScale/=0.9f;
+
+		MaxDeltaH=0;MaxDeltaM=0;
 		foreach(ChemVolume v in Volumes)
 		{
 			v.OnMoveMass();

@@ -5,7 +5,7 @@ public class ConnectionDataSource : MonoBehaviour {
 
 	ValueTransfer indicator;
 	public enum ValueType{
-		ValvePosition
+		ValvePosition,Flow
 	}
 	public ChemConnection TargetConnection;
 	public ValueType TargetType;
@@ -26,6 +26,9 @@ public class ConnectionDataSource : MonoBehaviour {
 		{
 		case ValueType.ValvePosition:
 			indicator.OnUpdateValue(TargetConnection.GateGap);
+			break;
+		case ValueType.Flow:
+			indicator.OnUpdateValue(TargetConnection.Flow);
 			break;
 		}
 	}

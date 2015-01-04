@@ -6,11 +6,12 @@ public class ChemConnection : MonoBehaviour {
 	public bool TransfersMass = true, TransfersHeat = false;
 	public ChemVolume VolumeIn,VolumeOut;
 	public float Kheat = 1, Kmass=  1;
+	public float Flow{get;internal set;}
 
 	// gate controls the amount of gas moving through this connection
 	//public bool HasGate = false;
 	public bool HasCheckValve = false;
-
+	Plant plant;
 	float gateGap = 1f;
 	public float GateGap{
 		get{
@@ -21,7 +22,7 @@ public class ChemConnection : MonoBehaviour {
 		}
 	}
 	void Awake(){
-
+		plant = GetComponentInParent<Plant>();
 	}
 	// Use this for initialization
 	void Start () {
@@ -36,8 +37,8 @@ public class ChemConnection : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void FixedUpdate () {
+		Flow = 0;
 	}
 
 	void OnDrawGizmos()
@@ -77,8 +78,11 @@ public class ChemConnection : MonoBehaviour {
 		{
 			int x=0;
 		}
-		return (sourceVol.Pressure - receiverVol.Pressure)*Kmass*gateGap;
+		float res =  (sourceVol.Pressure - receiverVol.Pressure)*Kmass*gateGap;
 
+		if(float.IsNaN(res) || float.IsInfinity(res))
+			throw new UnityException("GetMassBalance result is Nan or Infinity");
+		return res;
 	}
 
 	// >0 if it is more heat in source volume 
@@ -97,6 +101,10 @@ public class ChemConnection : MonoBehaviour {
 
 		ChemMix mix = sourceVol.Mix.TakeMix(mass);
 		receiverVol.Mix.AddMix(mix);
+		if(receiverVol==VolumeOut)
+			Flow+=mass;
+		else
+			Flow-=mass;
 	}
 
 	public void MoveHeat(ChemVolume receiverVol, float heat)

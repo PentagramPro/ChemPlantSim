@@ -11,6 +11,7 @@ public class Boiler : MonoBehaviour {
 	public ChemVolume Tank;
 	public ChemElement SteamElement;
 
+	Plant plant;
 	CTDelay boilerDelay;
 	CTIntegrator boilerHeat;
 	float CMboiler = 4.2e6f;
@@ -22,14 +23,14 @@ public class Boiler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		plant = GetComponentInParent<Plant>();
 		ChemFraction fraction = new ChemFraction(SteamElement);
 		fraction.Mass = Constants.WorldPressure*Tank.Volume / (Constants.R*Constants.WorldTemp);
 		Tank.Mix.AddFraction(fraction);
 		Tank.Mix.Heat=Constants.WorldTemp*SteamElement.HeatCap*fraction.Mass;
 		Tank.Mix.RebuildCache();
-		boilerHeat = new CTIntegrator(300f*CMboiler);
-		boilerDelay = new CTDelay(0,0.05f);
+		boilerHeat = new CTIntegrator(plant,300f*CMboiler);
+		boilerDelay = new CTDelay(plant,0,0.05f);
 	}
 	
 	// Update is called once per frame

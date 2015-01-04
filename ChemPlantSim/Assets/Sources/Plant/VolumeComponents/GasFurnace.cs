@@ -8,6 +8,7 @@ public class GasFurnace : MonoBehaviour {
 	public float MaxFuelMassPerSec;
 
 	ChemVolume vol;
+	Plant plant;
 
 	float fuelRate =0;
 	public float FuelRate{
@@ -20,6 +21,7 @@ public class GasFurnace : MonoBehaviour {
 	}
 	void Awake(){
 		vol = GetComponent<ChemVolume>();
+		plant = GetComponent<Plant>();
 	}
 	// Use this for initialization
 	void Start () {
@@ -34,7 +36,7 @@ public class GasFurnace : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void FixedUpdate () {
-		vol.Mix.Heat+=FuelHeat*MaxFuelMassPerSec*FuelRate*Time.fixedDeltaTime;
+		vol.Mix.Heat+=FuelHeat*MaxFuelMassPerSec*FuelRate*plant.PlantDeltaTime;
 	}
 
 

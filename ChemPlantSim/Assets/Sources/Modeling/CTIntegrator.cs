@@ -4,14 +4,16 @@ using UnityEngine;
 public class CTIntegrator
 {
 	float value = 0;
-	public CTIntegrator (float initialCondition)
+	Plant plant;
+	public CTIntegrator (Plant p,float initialCondition)
 	{
 		value = initialCondition;
+		plant = p;
 	}
 
 	public float Next(float input)
 	{
-		value+=input*Time.fixedDeltaTime;
+		value+=input*plant.PlantDeltaTime;
 		return value;
 	}
 }

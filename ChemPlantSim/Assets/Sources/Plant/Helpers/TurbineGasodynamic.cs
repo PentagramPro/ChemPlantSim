@@ -9,6 +9,8 @@ public class TurbineGasodynamic : MonoBehaviour {
 	public float PressureScale = 0.1f;
 	public float FlowScale = 0.8f;
 	public float CurveFactor = 0.0005f;
+
+	public float RpmFlowLimit = 2811;
 	// Use this for initialization
 	void Start () {
 	
@@ -21,6 +23,7 @@ public class TurbineGasodynamic : MonoBehaviour {
 
 	public float CalculateFlow(float pressure,float revs)
 	{
+		revs = Mathf.Max(revs,RpmFlowLimit);
 		float pressureShift = Mathf.Max(1f, PressureMid+PressureScale*(revs-RmpMid));
 		float flowShift = Mathf.Max(FlowMid+FlowScale*(revs-RmpMid));
 		float x = pressure*1e-5f-pressureShift;
