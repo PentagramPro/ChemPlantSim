@@ -3,14 +3,12 @@ using System.Collections;
 
 
 public class TurbineGasodynamic : MonoBehaviour {
-	public float RmpMid = 3150;
+	public float RpmMid = 3150;
 	public float PressureMid = 35;
 	public float FlowMid = 1450;
-	public float PressureScale = 0.1f;
-	public float FlowScale = 0.8f;
-	public float CurveFactor = 0.0005f;
+	public float PressureDif = 100;
+	public float FlowDif = 10;
 
-	public float RpmFlowLimit = 2811;
 	// Use this for initialization
 	void Start () {
 	
@@ -23,13 +21,20 @@ public class TurbineGasodynamic : MonoBehaviour {
 
 	public float CalculateFlow(float pressure,float revs)
 	{
-		revs = Mathf.Max(revs,RpmFlowLimit);
-		float pressureShift = Mathf.Max(1f, PressureMid+PressureScale*(revs-RmpMid));
-		float flowShift = Mathf.Max(FlowMid+FlowScale*(revs-RmpMid));
-		float x = pressure*1e-5f-pressureShift;
-		x*=CurveFactor;
-		x = Mathf.Min(x,-CurveFactor);
-		x = 1/x+flowShift;
-		return x;
+		float Pref = revs/RpmMid*PressureMid;
+		float Fref = revs/RpmMid*FlowMid;
+		float b=0,k=0;
+		if(pressure>Pref)
+		{
+			b = Pref+PressureDif;
+			k = -PressureDif/Fref;
+		}
+		else
+		{
+			b=Pref*(Fref+FlowDif)/FlowDif;
+			k=-Pref/FlowDif;
+		}
+		float flow = (pressure-b)/k;
+		return flow;
 	}
 }
