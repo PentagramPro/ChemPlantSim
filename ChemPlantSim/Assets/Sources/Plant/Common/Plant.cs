@@ -31,8 +31,13 @@ public class Plant : MonoBehaviour {
 			PlantTimeScale*=0.9f;
 		else if(MaxDeltaM<5 && MaxDeltaH<1e6)
 			PlantTimeScale/=0.9f;
-
+		if(PlantTimeScale>10)
+			PlantTimeScale=10;
 		MaxDeltaH=0;MaxDeltaM=0;
+		foreach(ChemVolume v in Volumes)
+		{
+			v.OnPrepareStep();
+		}
 		foreach(ChemVolume v in Volumes)
 		{
 			v.OnMoveMass();

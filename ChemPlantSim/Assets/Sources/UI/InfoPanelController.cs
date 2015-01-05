@@ -14,7 +14,7 @@ public class InfoPanelController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		infoText.text = string.Format("dM={0}, dH={1}, scale={2}, LastFlow={3}",
+		infoText.text = string.Format("dM={0}\n dH={1}\n scale={2}\n LastFlow={3}",
 		            plant.MaxDeltaM,plant.MaxDeltaH,plant.PlantTimeScale,Comp.LastFlow);
 	}
 }

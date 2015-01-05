@@ -21,6 +21,7 @@ public class TurbineGasodynamic : MonoBehaviour {
 
 	public float CalculateFlow(float pressure,float revs)
 	{
+		pressure/=1e5f;
 		float Pref = revs/RpmMid*PressureMid;
 		float Fref = revs/RpmMid*FlowMid;
 		float b=0,k=0;

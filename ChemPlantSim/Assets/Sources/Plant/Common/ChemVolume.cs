@@ -52,6 +52,12 @@ public class ChemVolume : MonoBehaviour {
 		}
 	}
 
+	public void OnPrepareStep()
+	{
+		foreach(ChemConnection con in Connections)
+			con.OnPrepareStep();
+	}
+
 	public void OnMoveMass()
 	{
 
@@ -63,7 +69,7 @@ public class ChemVolume : MonoBehaviour {
 			float bal = con.GetMassBalance(this);
 			if(bal>0)
 			{
-				con.MoveMass(this,bal*plant.PlantDeltaTime);
+				con.MoveMass(this,bal);
 			}
 		}
 

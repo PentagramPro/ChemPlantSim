@@ -35,10 +35,15 @@ public class ChemConnection : MonoBehaviour {
 			VolumeOut.Connections.Add(this);
 		}
 	}
+
+	public void OnPrepareStep()
+	{
+		Flow = 0;	
+	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		Flow = 0;
+	
 	}
 
 	void OnDrawGizmos()
@@ -71,6 +76,7 @@ public class ChemConnection : MonoBehaviour {
 	}
 
 	// >0 if it is more mass in source volume 
+	// TIME IS APPLIED
 	public float GetMassBalance(ChemVolume receiverVol)
 	{
 		ChemVolume sourceVol = GetSourceForReceiver(receiverVol);
@@ -78,8 +84,15 @@ public class ChemConnection : MonoBehaviour {
 		{
 			int x=0;
 		}
-		float res =  (sourceVol.Pressure - receiverVol.Pressure)*Kmass*gateGap;
+		float res =  (sourceVol.Pressure - receiverVol.Pressure)*Kmass*gateGap*plant.PlantDeltaTime;
+		if(res>0)
+		{
+			float probableMass = GasUtils.CalculateMass(sourceVol.Pressure,receiverVol.Volume,sourceVol.Mix.Temp);
+			float dm = probableMass-receiverVol.Mix.Mass;
+			if(dm>0 && res>dm)
+				res=dm;
 
+		}
 		if(float.IsNaN(res) || float.IsInfinity(res))
 			throw new UnityException("GetMassBalance result is Nan or Infinity");
 		return res;

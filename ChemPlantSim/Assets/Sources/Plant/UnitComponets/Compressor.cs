@@ -13,9 +13,9 @@ public class Compressor : MonoBehaviour {
 	public ChemVolume SteamIn,SteamOut,GasIn,GasOut;
 	public ChemConnection SteamValve;
 
-	public float MassToRpmGain = 1.1f;
+	float MassToRpmGain = 1000f;
 
-	float steamToMass = 0.002f;
+	float steamToMass = 5e-7f;
 	float revRegulatorGain = 8e-6f;
 	Plant plant;
 	public float LastFlow=0;
@@ -31,7 +31,7 @@ public class Compressor : MonoBehaviour {
 		turbine = GetComponent<TurbineGasodynamic>();
 		plant = GetComponentInParent<Plant>();
 
-		turbineInertia = new CTDelay(plant,0,0.2f);
+		turbineInertia = new CTDelay(plant,0,0.02f);
 
 		revRegIntegrator = new CTIntegrator(plant,0);
 		revRegDelay = new CTDelay(plant,0, 0.666f);
@@ -55,7 +55,7 @@ public class Compressor : MonoBehaviour {
 
 		// flow in kg per minute 
 		float kgPerSec = plant.PlantDeltaTime* flow*IdealDensity/60f;
-		LastFlow = flow*IdealDensity/60f;
+		LastFlow = flow;
 		if(kgPerSec!=0)
 		{
 
